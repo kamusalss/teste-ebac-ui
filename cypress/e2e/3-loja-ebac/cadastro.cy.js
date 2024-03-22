@@ -1,8 +1,9 @@
 ///<reference types="cypress"/>
 import { faker } from '@faker-js/faker';
+
 describe('Funcionalidade: Cadastro', () => { 
     beforeEach(() => {
-        cy.visit('http://lojaebac.ebaconline.art.br/minha-conta/')
+        cy.visit('minha-conta')
     });
     it('Deve completar o cadastro com sucesso', () => {
         cy.get('#reg_email').type(faker.internet.email())
@@ -16,7 +17,7 @@ describe('Funcionalidade: Cadastro', () => {
         cy.get('.woocommerce-message').should('exist')
     });
 
-    it.only('Deve completar o cadastro com sucesso - usando variáveis', () => {
+    it('Deve completar o cadastro com sucesso - usando variáveis', () => {
         var nome = faker.person.firstName()
         var email = faker.internet.email(nome)
         var sobrenome = faker.person.lastName()
@@ -30,5 +31,9 @@ describe('Funcionalidade: Cadastro', () => {
         cy.get('#account_last_name').type(sobrenome)
         cy.get('.woocommerce-Button').click()
         cy.get('.woocommerce-message').should('exist')
+    });
+
+    it.only('Deve completar o cadastro com sucesso - usando comando customizado', () => {
+        cy.preCadastro(faker.internet.email(), 'kamai666', faker.person.firstName(), faker.person.lastName())
     });
 });
