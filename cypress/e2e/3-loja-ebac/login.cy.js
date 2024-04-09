@@ -43,7 +43,6 @@ it('Deve fazer login com sucesso - Usando Fixture', () => {
     //cy.get('.woocommerce-MyAccount-content > :nth-child(2)').should('contain','Olá, kamusalss') 
 });
 it.only('Deve fazer login com sucesso - usando Comandos customizado', () => {
-    //cy.visit('minha-conta')
     cy.login('kamusalss@gmail.com', 'kamai666')
     cy.get('.woocommerce-MyAccount-content > :nth-child(2)').should('contain','Olá, kamusalss') 
 });

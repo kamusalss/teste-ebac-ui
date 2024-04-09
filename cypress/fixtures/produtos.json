@@ -1,0 +1,14 @@
+[
+    {
+        "nomeProduto": "Abominable Hoodie",
+        "tamanho": "XS",
+        "cor": "Blue",
+        "quantidade": 3
+    },
+    {
+        "nomeProduto": "Chaz Kangeroo Hoodie",
+        "tamanho": "L",
+        "cor": "Black",
+        "quantidade": 3 
+    }
+]
