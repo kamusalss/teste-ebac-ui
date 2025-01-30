@@ -31,7 +31,7 @@ describe('Funcionalidade: Produtos', () => {
         cy.get('.woocommerce-message').should('contain', 'no seu carrinho.')
     });
 
-    it.only('Deve adicionar produto ao carrinho buscando da massa de dados', () => {
+    it('Deve adicionar produto ao carrinho buscando da massa de dados', () => {
       cy.fixture('produtos').then(dados => {
         produtosPage.buscarProduto(dados[0].nomeProduto)
         produtosPage.addProdutoCarrinho(
@@ -41,6 +41,23 @@ describe('Funcionalidade: Produtos', () => {
         cy.get('.woocommerce-message').should('contain', 'no seu carrinho.')
            });
       })
+
+    it.only('Deve adicionar 3 produtos diferentes ao carrinho', () => {
+        let qtd = 1
+        let produto1 = "Zeppelin Yoga Pant"
+        let produto2 = "Circe Hooded Ice Fleece"
+        let produto3 = "Josie Yoga Jacket"
+        produtosPage.buscarProduto(produto1)
+        produtosPage.addProdutoCarrinho('32', 'Blue', qtd)
+        produtosPage.buscarProduto(produto2)
+        produtosPage.addProdutoCarrinho('S', 'Gray', qtd)
+        produtosPage.buscarProduto(produto3)
+        produtosPage.addProdutoCarrinho('S', 'Blue', qtd)
+        cy.get('.woocommerce-message > .button').click()
+        cy.get(':nth-child(1) > .product-name > a').should('contain', produto1)
+        cy.get(':nth-child(2) > .product-name > a').should('contain', produto2)
+        cy.get(':nth-child(3) > .product-name > a').should('contain', produto3)
+    });
       
        
        
